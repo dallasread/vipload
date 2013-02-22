@@ -1,0 +1,7 @@
+<%= form_tag vipload_path, multipart: true do |f| %>
+	File: <%= file_field_tag :file %><br />
+	Path: <%= text_field_tag :key %><br />
+	Filename: <%= text_field_tag :filename %><br />
+	Redirect: <%= text_field_tag :redirect %><br />
+	<%= submit_tag "Upload" %>
+<% end %>

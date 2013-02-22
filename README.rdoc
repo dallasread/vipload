@@ -1,0 +1,49 @@
+= Vipload
+
+This project rocks and uses MIT-LICENSE.
+
+== Installation
+
+*Gemfile:*
+`gem "vipload"`
+`bundle install`
+
+== Setup
+*routes.rb:*
+`mount Vipload::Engine => "/vipload"`
+
+*config/vipload.yml*
+```
+development:
+  server: ftp.awesomeserver.com
+  username: cooluser
+  password: secretpassword
+
+test:
+  server: ftp.awesomeserver.com
+  username: cooluser
+  password: secretpassword
+
+production:
+  server: ftp.awesomeserver.com
+  username: cooluser
+  password: secretpassword
+```
+
+== Usage
+*Your View*
+```
+<%= form_tag vipload_path, multipart: true do |f| %>
+	File: <%= file_field_tag :file %><br />
+	Path: <%= text_field_tag :key %><br />
+	Filename: <%= text_field_tag :filename %><br />
+	Redirect: <%= text_field_tag :redirect %><br />
+	<%= submit_tag "Upload" %>
+<% end %>
+```
+
+== What Are These Options?
+*file* - required, the upload field
+*key* - required, the path to the file on the ftp server
+*filename* - not required, a new name for the file (defaults to original name)
+*redirect* - not required, url to direct the user upon completion
